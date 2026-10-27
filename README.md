@@ -93,14 +93,6 @@ kubectl get pods,pvc -n terraform-lab
 terraform output
 ```
 
-### Destroy and recreate test
-
-Ran `terraform destroy` and confirmed the state was empty and the namespace was removed. A subsequent plan showed three resources to create.
-
-Ran `terraform apply` again. The application pods became Ready, the PVC became Bound, and the website and health endpoints worked with a freshly initialised database.
-
-This verified recreation on the existing kind cluster using the existing Flask image and local Helm chart.
-
 Verified results:
 
 - Three resources recorded in Terraform state.
@@ -121,6 +113,14 @@ Keep the terminal running and open these addresses in the Ubuntu VM:
 - http://localhost:9091/ready — `Ready`
 
 If you override the namespace, use that namespace in verification commands.
+
+### Destroy and recreate test
+
+Ran `terraform destroy` and confirmed the state was empty and the namespace was removed. A subsequent plan showed three resources to create.
+
+Ran `terraform apply` again. The application pods became Ready, the PVC became Bound, and the website and health endpoints worked with a freshly initialised database.
+
+This verified recreation on the existing kind cluster using the existing Flask image and local Helm chart.
 
 ## State and secrets
 
